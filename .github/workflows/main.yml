@@ -1,32 +1,81 @@
-name: CI
-on: [push]
+name: Build, test, and deploy
+
+on:
+  # workflow_dispatch:
+  # pull_request:
+  push:
+    branches:
+      - master
+
 jobs:
   build:
-    name: Build, lint, and test on Node ${{ matrix.node }} and ${{ matrix.os }}
-
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        node: ['10.x', '12.x', '14.x']
-        os: [ubuntu-latest, windows-latest, macOS-latest]
-
+    runs-on: ubuntu-18.04
     steps:
-      - name: Checkout repo
+
+      - name: Pushbullet Notification
+        uses: ShaunLWM/action-pushbullet@master
+        env:
+          PB_TOKEN: ${{ secrets.PB_TOKEN }}
+          PB_TITLE: Capital Art DS
+          PB_TEXT: "Build job started"
+
+      - name: "Checkout"
         uses: actions/checkout@v2
-
-      - name: Use Node ${{ matrix.node }}
-        uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node }}
+          fetch-depth: '0'
 
-      - name: Install deps and build (with cache)
-        uses: bahmutov/npm-install@v1
+      - name: Pushbullet Notification
+        uses: ShaunLWM/action-pushbullet@master
+        env:
+          PB_TOKEN: ${{ secrets.PB_TOKEN }}
+          PB_TITLE: Capital Art DS
+          PB_TEXT: "Installing dependencies"
 
-      - name: Lint
-        run: yarn lint
+      # Install node dependencies
+      - name: "Setup Node.js"
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          registry-url: https://registry.npmjs.org/
 
-      - name: Test
-        run: yarn test --ci --coverage --maxWorkers=2
+      # https://github.com/marketplace/actions/github-action-for-yarn
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: install
 
-      - name: Build
-        run: yarn build
+      - name: Pushbullet Notification
+        uses: ShaunLWM/action-pushbullet@master
+        env:
+          PB_TOKEN: ${{ secrets.PB_TOKEN }}
+          PB_TITLE: Capital Art DS
+          PB_TEXT: "Tagging the branch"
+
+      # tag the branch
+      - name: Bump version and push tag
+        id: bump
+        uses: anothrNick/github-tag-action@1.36.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: false
+          DEFAULT_BUMP: minor
+
+      - run: npm --no-git-tag-version version ${{ steps.bump.outputs.tag }}
+
+      - name: Pushbullet Notification
+        uses: ShaunLWM/action-pushbullet@master
+        env:
+          PB_TOKEN: ${{ secrets.PB_TOKEN }}
+          PB_TITLE: Capital Art DS
+          PB_TEXT: "Publish to NPM"
+
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
+      - name: Pushbullet Notification
+        uses: ShaunLWM/action-pushbullet@master
+        env:
+          PB_TOKEN: ${{ secrets.PB_TOKEN }}
+          PB_TITLE: Capital Art DS
+          PB_TEXT: "Build job completed"
+
