@@ -68,7 +68,7 @@ jobs:
           PB_TITLE: Capital Art DS
           PB_TEXT: "Publish to NPM"
 
-      - run: npm publish
+      - run: sudo npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
