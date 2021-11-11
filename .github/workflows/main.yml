@@ -10,6 +10,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-18.04
+    permissions: 
+      contents: read
+      packages: write 
     steps:
 
       - name: Pushbullet Notification
@@ -66,7 +69,7 @@ jobs:
           PB_TITLE: Capital Art DS
           PB_TEXT: "Publish to NPM"
 
-      - run: sudo npm publish --access public
+      - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
