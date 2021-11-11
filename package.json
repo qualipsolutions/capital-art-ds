@@ -1,10 +1,23 @@
 {
   "name": "@snapdev-ui/capital-art-ds",
-  "author": "Tshepo Mgaga",
+  "author": "The Capital Art Team",
   "version": "0.1.0",
   "license": "MIT",
+  "description": "Capital Art design system library",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
+  "keywords": [
+    "capital art",
+    "snapdev-ui"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qualipsolutions/capital-art-ds.git"
+  },
+  "bugs": {
+    "url": "https://github.com/qualipsolutions/capital-art-ds/issues"
+  },
+  "homepage": "https://github.com/qualipsolutions/capital-art-ds",
   "files": [
     "dist",
     "src"
@@ -18,7 +31,7 @@
     "build": "tsdx build && yarn build-tailwind",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
-    "prepare": "tsdx build",
+    "prepare": "yarn build",
     "size": "size-limit",
     "analyze": "size-limit --why",
     "storybook": "start-storybook -p 6006",
