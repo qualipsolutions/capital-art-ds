@@ -55,6 +55,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WITH_V: false
           DEFAULT_BUMP: minor
+          INITIAL_VERSION: 0.1.0
 
       - run: npm --no-git-tag-version version ${{ steps.bump.outputs.tag }}
 
