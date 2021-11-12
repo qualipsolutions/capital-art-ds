@@ -4,6 +4,7 @@ import { ToggleSwitch } from '..';
 
 export interface PriceTier {
   title: string;
+  price?: number;
   semiPrice: string;
   annualPrice: string;
   semiOtherPrice: string;
@@ -21,6 +22,7 @@ export interface PricingProps {
   tiers: PriceTier[];
   annualDiscount: string;
   isOutsideSA: boolean;
+  onClick: (priceTier: PriceTier) => void;
 }
 
 function classNames(...classes: any[]) {
@@ -31,6 +33,7 @@ const Pricing = ({
   tiers = [],
   annualDiscount,
   isOutsideSA = false,
+  onClick,
 }: PricingProps) => {
   const [isAnnualBilling, setIsAnnualBilling] = useState(false);
 
@@ -69,7 +72,7 @@ const Pricing = ({
           </div>
           <div className="">
             {annualDiscount && (
-              <h3 className="md:ml-6 p-2 pl-6 pr-6 inline-flex rounded-full text-sm font-medium tracking-wide bg-gray-100 text-black">
+              <h3 className="sm:ml-6 p-2 pl-6 pr-6 inline-flex rounded-full text-sm font-medium tracking-wide bg-gray-100 text-black">
                 {`Save ${annualDiscount}% with annual plans`}
               </h3>
             )}
@@ -156,6 +159,15 @@ const Pricing = ({
 
               <a
                 href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  let billingPrice = price === 'Free' ? '0' : price;
+                  onClick({
+                    ...tier,
+                    currency,
+                    price: Number(billingPrice?.replace(/,/gi, '')),
+                  });
+                }}
                 className={classNames(
                   tier.mostPopular
                     ? 'bg-indigo-500 text-white hover:bg-indigo-600'

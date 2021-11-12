@@ -119,4 +119,7 @@ Default.args = {
   isOutsideSA: false,
   annualDiscount: '20',
   tiers: [basic, premium, reportA, reportB, enterprise],
+  onClick: function (tier) {
+    console.log({ tier });
+  },
 };
