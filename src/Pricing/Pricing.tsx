@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CheckIcon } from '@heroicons/react/outline';
-import { ToggleSwitch } from '..';
+import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
 
 export interface PriceTier {
   title: string;
