@@ -22,7 +22,7 @@ export default meta;
 const Template: Story<PricingProps> = (args) => <Pricing {...args} />;
 
 const basic = {
-  title: 'Basic',
+  title: 'Basic Collector',
   semiPrice: 'Free',
   annualPrice: 'Free',
   semiOtherPrice: 'Free',
@@ -40,7 +40,7 @@ const basic = {
 };
 
 const premium = {
-  title: 'Premium',
+  title: 'Premium Collector',
   semiPrice: '2,399',
   annualPrice: '3,828',
   semiOtherPrice: '239.99',
@@ -60,7 +60,7 @@ const premium = {
   subscription: true,
 };
 const reportA = {
-  title: 'Report-Only Basic',
+  title: 'Report-Only: Basic',
   semiPrice: '1,699',
   annualPrice: '1,699',
   semiOtherPrice: '169.99',
@@ -77,7 +77,7 @@ const reportA = {
   subscription: false,
 };
 const reportB = {
-  title: 'Report-Only Pro',
+  title: 'Report-Only: Premium',
   semiPrice: '3,399',
   annualPrice: '3,399',
   semiOtherPrice: '339.99',
@@ -86,7 +86,7 @@ const reportB = {
   currencyOther: '$ ',
   description: 'For individuals looking for reports on an adhoc basis.',
   features: [
-    { id: '90', name: 'Up to 99 artworks' },
+    { id: '90', name: '50 to 99 artworks' },
     { id: '100', name: 'Securely manage your collection' },
   ],
   cta: 'Sign up',
@@ -94,14 +94,14 @@ const reportB = {
   subscription: false,
 };
 const enterprise = {
-  title: 'Enterprise',
+  title: 'Pro Collector',
   semiPrice: 'Contact us',
   annualPrice: 'Contact us',
   semiOtherPrice: 'Contact us',
   annualOtherPrice: 'Contact us',
   currency: '',
   currencyOther: '',
-  description: 'For collections with 100 artworks or more.',
+  description: 'For individuals with 100 artworks or more.',
   features: [
     { id: '110', name: '100 or more artworks' },
     { id: '120', name: 'Securely manage your collection' },

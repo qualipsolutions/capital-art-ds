@@ -67,7 +67,7 @@ jobs:
         env:
           PB_TOKEN: ${{ secrets.PB_TOKEN }}
           PB_TITLE: Capital Art DS
-          PB_TEXT: "Publish to NPM"
+          PB_TEXT: "Publishing to NPM"
 
       - run: npm publish --access public
         env:
