@@ -16,6 +16,13 @@ const meta: Meta = {
   parameters: {
     controls: { expanded: true },
   },
+  decorators: [
+    (Story) => (
+      <div id="tailwind-root">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;
