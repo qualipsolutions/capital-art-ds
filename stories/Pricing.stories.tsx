@@ -124,7 +124,7 @@ export const Default = Template.bind({});
 Default.storyName = 'Default';
 Default.args = {
   isOutsideSA: false,
-  gridColumnsLG: 3,
+  gridColumnsLG: 5,
   gridColumnsXL: 3,
   gridColumnsMD: 2,
   annualDiscount: '20',
@@ -143,7 +143,7 @@ UpgradeFromBasic.args = {
   isOutsideSA: false,
   annualDiscount: '20',
   gridColumnsLG: 3,
-  gridColumnsXL: 3,
+  gridColumnsXL: 4,
   gridColumnsMD: 2,
   // heading: 'Keep your art collection well organised.',
   // subHeading: 'Start free.',
