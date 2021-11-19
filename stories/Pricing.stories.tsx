@@ -143,7 +143,7 @@ UpgradeFromBasic.args = {
   isOutsideSA: false,
   annualDiscount: '20',
   gridColumnsLG: 3,
-  gridColumnsXL: 3,
+  gridColumnsXL: 4,
   gridColumnsMD: 2,
   // heading: 'Keep your art collection well organised.',
   // subHeading: 'Start free.',

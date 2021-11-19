@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CheckIcon } from '@heroicons/react/outline';
 import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
+import classnames from 'classnames';
 
 export interface PriceTier {
   title: string;
@@ -18,13 +19,15 @@ export interface PriceTier {
   subscription: boolean;
 }
 
+type GridColumn = 1 | 2 | 3 | 4 | 5;
+
 export interface PricingProps {
   heading: string;
   subHeading: string;
   tagLine: string;
-  gridColumnsMD: number;
-  gridColumnsXL: number;
-  gridColumnsLG: number;
+  gridColumnsMD: GridColumn;
+  gridColumnsXL: GridColumn;
+  gridColumnsLG: GridColumn;
   showFrequencyToggle: boolean;
   tiers: PriceTier[];
   annualDiscount: string;
@@ -69,7 +72,7 @@ const Pricing = ({
 
         {/* Billing Type */}
         {showFrequencyToggle && (
-          <div className="mt-1 sm:flex sm:flex-col sm:align-center">
+          <div className="mt-1 sm:flex sm:flex-col sm:align-cente">
             <div className="relative self-center mt-6 rounded-lg p-0.5 flex sm:mt-8 flex-wrap items-center justify-center space-y-4 sm:space-y-0">
               <div className="flex">
                 <div className="">
@@ -112,7 +115,28 @@ const Pricing = ({
         {/* Tiers */}
         <div className="flex items-center justify-center">
           <div
-            className={`mt-14 space-y-12 md:space-y-0 md:grid md:grid-cols-${gridColumnsMD} md:gap-x-8 md:gap-y-8 lg:grid-cols-${gridColumnsLG} xl:grid-cols-${gridColumnsXL}`}
+            className={classnames(
+              `mt-14 space-y-12 md:space-y-0 md:grid md:gap-x-8 md:gap-y-8 lg:grid-cols-3 xl:grid-cols-5`,
+              {
+                'md:grid-cols-1': gridColumnsMD === 1,
+                'md:grid-cols-2': gridColumnsMD === 2,
+                'md:grid-cols-3': gridColumnsMD === 3,
+                'md:grid-cols-4': gridColumnsMD === 4,
+                'md:grid-cols-5': gridColumnsMD === 5,
+
+                'lg:grid-cols-1': gridColumnsLG === 1,
+                'lg:grid-cols-2': gridColumnsLG === 2,
+                'lg:grid-cols-3': gridColumnsLG === 3,
+                'lg:grid-cols-4': gridColumnsLG === 4,
+                'lg:grid-cols-5': gridColumnsLG === 5,
+
+                'xl:grid-cols-1': gridColumnsXL === 1,
+                'xl:grid-cols-2': gridColumnsXL === 2,
+                'xl:grid-cols-3': gridColumnsXL === 3,
+                'xl:grid-cols-4': gridColumnsXL === 4,
+                'xl:grid-cols-5': gridColumnsXL === 5,
+              }
+            )}
           >
             {tiers.map((tier) => {
               let price = '';
