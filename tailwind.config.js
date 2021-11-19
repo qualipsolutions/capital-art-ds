@@ -4,6 +4,12 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   important: '#tailwind-root',
   theme: {
+    // fontSize: {
+    //   xs: '0.75rem',
+    //   sm: '0.875rem',
+    //   lg: '1.25rem',
+    //   xl: '1.5rem',
+    // },
     screens: {
       xs: 0,
       sm: '577px',
