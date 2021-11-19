@@ -124,7 +124,7 @@ export const Default = Template.bind({});
 Default.storyName = 'Default';
 Default.args = {
   isOutsideSA: false,
-  gridColumnsLG: 3,
+  gridColumnsLG: 5,
   gridColumnsXL: 3,
   gridColumnsMD: 2,
   annualDiscount: '20',
