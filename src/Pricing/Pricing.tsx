@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { CheckIcon } from '@heroicons/react/outline';
 import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
 import classnames from 'classnames';
+import { CheckoutProps } from '../Checkout';
 
 export interface PriceTier {
   title: string;
@@ -32,7 +33,7 @@ export interface PricingProps {
   tiers: PriceTier[];
   annualDiscount: string;
   isOutsideSA: boolean;
-  onClick: (priceTier: PriceTier) => void;
+  onClick: (priceTier: PriceTier, checkout: CheckoutProps) => void;
 }
 
 function classNames(...classes: any[]) {
@@ -146,21 +147,21 @@ const Pricing = ({
                 if (isOutsideSA) {
                   price = tier.annualOtherPrice;
                   currency = tier.currencyOther;
-                  frequency = '/annually';
+                  frequency = 'Annually';
                 } else {
                   price = tier.annualPrice;
                   currency = tier.currency;
-                  frequency = '/annually';
+                  frequency = 'Annually';
                 }
               } else {
                 if (isOutsideSA) {
                   price = tier.semiOtherPrice;
                   currency = tier.currencyOther;
-                  frequency = '/semi-annually';
+                  frequency = 'Semi-annually';
                 } else {
                   price = tier.semiPrice;
                   currency = tier.currency;
-                  frequency = '/semi-annually';
+                  frequency = 'Semi-annually';
                 }
               }
 
@@ -188,7 +189,7 @@ const Pricing = ({
                         {price}
                       </span>
                       <span className="ml-1 text-sm font-thin">
-                        {frequency}
+                        {frequency ? `/${frequency}` : ''}
                       </span>
                     </p>
                     <p className="mt-6 text-gray-500">{tier.description}</p>
@@ -216,11 +217,25 @@ const Pricing = ({
                     onClick={(e) => {
                       e.preventDefault();
                       let billingPrice = price === 'Free' ? '0' : price;
-                      onClick({
+                      const amount = Number(billingPrice?.replace(/,/gi, ''));
+
+                      const pricingProps = {
                         ...tier,
-                        currency,
-                        price: Number(billingPrice?.replace(/,/gi, '')),
-                      });
+                      };
+                      const checkoutProps = {
+                        title: 'Checkout',
+                        packageTitle: tier.title,
+                        subPackageTitle: tier.description,
+                        frequency,
+                        subscription: tier.subscription,
+                        price: currency + billingPrice,
+                        amount,
+                        paymentButtonText: 'Complete Payment',
+                        membershipUrlText: 'Learn about our terms of service',
+                        membershipUrl: '#pablo',
+                        features: tier.features.map((i) => i.name),
+                      };
+                      onClick(pricingProps, checkoutProps);
                     }}
                     className={classNames(
                       tier.mostPopular

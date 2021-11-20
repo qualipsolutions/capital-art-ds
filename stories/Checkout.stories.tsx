@@ -15,7 +15,7 @@ export default meta;
 
 const Template: Story<CheckoutProps> = (args) => <Checkout {...args} />;
 
-export const Default = Template.bind({});
+export const Default: Story<CheckoutProps> = Template.bind({});
 Default.storyName = 'Default';
 Default.args = {
   title: 'Checkout',
@@ -23,7 +23,7 @@ Default.args = {
   // we'll send you a full refund.`,
   packageTitle: 'Premium Collector',
   subPackageTitle: 'For individuals.',
-  priceHeading: 'Semi-annually',
+  frequency: 'Semi-annually',
   price: 'R2,399',
   amount: 2399,
   paymentButtonText: 'Complete Payment',
@@ -40,7 +40,7 @@ Default.args = {
   },
 };
 
-export const Empty = Template.bind({});
+export const Empty: Story<CheckoutProps> = Template.bind({});
 Empty.storyName = 'Empty';
 Empty.args = {
   // title: 'Simple no-tricks pricing',

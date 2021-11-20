@@ -3,17 +3,18 @@ import { CheckCircleIcon } from '@heroicons/react/solid';
 
 export interface CheckoutProps {
   title: string;
-  subtitle: string;
+  subtitle?: string;
   packageTitle: string;
   subPackageTitle: string;
   features: string[];
-  priceHeading: string;
+  frequency: string;
   price: string;
   amount: number;
-  membershipUrlText: string;
-  membershipUrl: string;
+  subscription: boolean;
+  membershipUrlText?: string;
+  membershipUrl?: string;
   paymentButtonText: string;
-  onCompletePayment: (props: CheckoutProps) => void;
+  onCompletePayment?: (props: CheckoutProps) => void;
 }
 
 const Checkout = (props: CheckoutProps) => {
@@ -71,7 +72,7 @@ const Checkout = (props: CheckoutProps) => {
               </div>
               <div className="py-8 px-6 text-center bg-gray-50 lg:flex-shrink-0 lg:flex lg:flex-col lg:justify-center lg:p-12">
                 <p className="text-lg leading-6 font-medium text-gray-900">
-                  {props.priceHeading}
+                  {props.frequency}
                 </p>
                 <div className="mt-4 flex items-center justify-center text-5xl font-extrabold text-gray-900">
                   <span>{props.price}</span>
@@ -93,7 +94,7 @@ const Checkout = (props: CheckoutProps) => {
                         className="flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600"
                         onClick={(e) => {
                           e.preventDefault();
-                          props.onCompletePayment(props);
+                          props.onCompletePayment?.(props);
                         }}
                       >
                         {props.paymentButtonText}

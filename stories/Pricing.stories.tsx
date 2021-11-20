@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { Pricing, PricingProps } from '../src';
+import { Pricing, PricingProps, CheckoutProps, PriceTier } from '../src';
 
 const meta: Meta = {
   title: 'Marketing/Pricing',
@@ -113,7 +113,7 @@ const enterprise = {
   cta: 'Contact us',
 };
 
-export const Default = Template.bind({});
+export const Default: Story<PricingProps> = Template.bind({});
 Default.storyName = 'Default';
 Default.args = {
   isOutsideSA: false,
@@ -125,12 +125,12 @@ Default.args = {
   subHeading: 'Start free.',
   tagLine: 'Find the option that makes the most sense for you.',
   tiers: [basic, premium, reportA, reportB, enterprise],
-  onClick: function (tier) {
-    console.log({ tier });
+  onClick: function (priceTier: PriceTier, checkout: CheckoutProps) {
+    console.log({ priceTier, checkout });
   },
 };
 
-export const UpgradeFromBasic = Template.bind({});
+export const UpgradeFromBasic: Story<PricingProps> = Template.bind({});
 UpgradeFromBasic.storyName = 'Upgrade From Basic';
 UpgradeFromBasic.args = {
   isOutsideSA: false,
@@ -147,12 +147,14 @@ UpgradeFromBasic.args = {
     { ...reportB, cta: 'Buy' },
     enterprise,
   ],
-  onClick: function (tier) {
-    console.log({ tier });
+  onClick: function (priceTier: PriceTier, checkout: CheckoutProps) {
+    console.log({ priceTier, checkout });
   },
 };
 
-export const UpgradeFromReportOnlyBasic = Template.bind({});
+export const UpgradeFromReportOnlyBasic: Story<PricingProps> = Template.bind(
+  {}
+);
 UpgradeFromReportOnlyBasic.storyName = 'Upgrade From Report Only Basic';
 UpgradeFromReportOnlyBasic.args = {
   isOutsideSA: false,
@@ -167,12 +169,14 @@ UpgradeFromReportOnlyBasic.args = {
     { ...reportB, cta: 'Buy' },
     enterprise,
   ],
-  onClick: function (tier) {
-    console.log({ tier });
+  onClick: function (priceTier: PriceTier, checkout: CheckoutProps) {
+    console.log({ priceTier, checkout });
   },
 };
 
-export const UpgradeFromReportOnlyPremium = Template.bind({});
+export const UpgradeFromReportOnlyPremium: Story<PricingProps> = Template.bind(
+  {}
+);
 UpgradeFromReportOnlyPremium.storyName = 'Upgrade From Report Only Premium';
 UpgradeFromReportOnlyPremium.args = {
   isOutsideSA: false,
@@ -184,12 +188,12 @@ UpgradeFromReportOnlyPremium.args = {
   // subHeading: 'Start free.',
   tagLine: 'Find the option that makes the most sense for you.',
   tiers: [{ ...premium, cta: 'Upgrade' }, enterprise],
-  onClick: function (tier) {
-    console.log({ tier });
+  onClick: function (priceTier: PriceTier, checkout: CheckoutProps) {
+    console.log({ priceTier, checkout });
   },
 };
 
-export const PriceOnly = Template.bind({});
+export const PriceOnly: Story<PricingProps> = Template.bind({});
 PriceOnly.storyName = 'Price Only';
 PriceOnly.args = {
   isOutsideSA: false,
@@ -202,12 +206,12 @@ PriceOnly.args = {
   // subHeading: 'Start free.',
   // tagLine: 'Find the option that makes the most sense for you.',
   tiers: [{ ...premium, cta: 'Upgrade' }, enterprise],
-  onClick: function (tier) {
-    console.log({ tier });
+  onClick: function (priceTier: PriceTier, checkout: CheckoutProps) {
+    console.log({ priceTier, checkout });
   },
 };
 
-export const OnePrice = Template.bind({});
+export const OnePrice: Story<PricingProps> = Template.bind({});
 OnePrice.storyName = 'One Price';
 OnePrice.args = {
   isOutsideSA: false,
@@ -220,7 +224,7 @@ OnePrice.args = {
   // subHeading: 'Start free.',
   // tagLine: 'Find the option that makes the most sense for you.',
   tiers: [{ ...premium, cta: 'Upgrade' }],
-  onClick: function (tier) {
-    console.log({ tier });
+  onClick: function (priceTier: PriceTier, checkout: CheckoutProps) {
+    console.log({ priceTier, checkout });
   },
 };
