@@ -22,7 +22,7 @@ export default meta;
 
 const Template: Story<ToggleSwitchProps> = (args) => <ToggleSwitch {...args} />;
 
-export const Default = Template.bind({});
+export const Default: Story<ToggleSwitchProps> = Template.bind({});
 Default.args = {
   enabled: false,
 };
