@@ -24,6 +24,7 @@ Default.args = {
   packageTitle: 'Premium Collector',
   subPackageTitle: 'For individuals.',
   frequency: 'Semi-annually',
+  currency: 'ZAR',
   price: 'R2,399',
   amount: 2399,
   paymentButtonText: 'Complete Payment',
