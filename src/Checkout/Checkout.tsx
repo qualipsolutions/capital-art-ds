@@ -78,7 +78,9 @@ const Checkout = (props: CheckoutProps) => {
                 </p>
                 <div className="mt-4 flex items-center justify-center text-5xl font-extrabold text-gray-900">
                   <span>{props.price}</span>
-                  <span className="ml-3 text-xl font-medium text-gray-500"></span>
+                  <span className="ml-3 text-xl font-medium text-gray-500">
+                    {props.currency}
+                  </span>
                 </div>
                 <p className="mt-4 text-sm">
                   <a
