@@ -29,7 +29,9 @@ Default.args = {
   amount: 2399,
   paymentButtonText: 'Complete Payment',
   membershipUrlText: 'Learn about our terms of service',
-  membershipUrl: '#pablo',
+  onMembershipUrlClick: function () {
+    console.log('link click');
+  },
   features: [
     'Up to 99 artworks',
     'Securely manage your collection',
