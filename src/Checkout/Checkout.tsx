@@ -17,6 +17,8 @@ export interface CheckoutProps {
   onMembershipUrlClick?: () => void;
   paymentButtonText: string;
   onCompletePayment?: (props: CheckoutProps) => void;
+  cancelText?: string;
+  onCancel?: () => void;
 }
 
 const Checkout = (props: CheckoutProps) => {
@@ -108,6 +110,20 @@ const Checkout = (props: CheckoutProps) => {
                         {props.paymentButtonText}
                       </a>
                     </div>
+                  </div>
+                )}
+                {props.cancelText && (
+                  <div className="mt-4 text-sm">
+                    <a
+                      href="#"
+                      className="font-medium text-gray-900"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        props.onCancel?.();
+                      }}
+                    >
+                      {props.cancelText}
+                    </a>
                   </div>
                 )}
               </div>

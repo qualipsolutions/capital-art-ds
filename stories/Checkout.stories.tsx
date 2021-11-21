@@ -41,6 +41,10 @@ Default.args = {
   onCompletePayment: function (props) {
     console.log(props);
   },
+  cancelText: 'Cancel',
+  onCancel: function () {
+    console.log('cancel click');
+  },
 };
 
 export const Empty: Story<CheckoutProps> = Template.bind({});
