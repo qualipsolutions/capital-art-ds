@@ -10,6 +10,8 @@ export interface CheckoutProps {
   frequency: string;
   price: string;
   amount: number;
+  amountInCents: number;
+  currency: string;
   subscription: boolean;
   membershipUrlText?: string;
   membershipUrl?: string;
