@@ -22,7 +22,9 @@ export default meta;
 const Template: Story<PricingProps> = (args) => <Pricing {...args} />;
 
 const basic = {
+  id: '1',
   title: 'Basic Collector',
+  packageCode: 'BASIC-COLLECTOR',
   semiPrice: 'Free',
   annualPrice: 'Free',
   semiOtherPrice: 'Free',
@@ -40,7 +42,9 @@ const basic = {
 };
 
 const premium = {
+  id: '2',
   title: 'Premium Collector',
+  packageCode: 'PREMIUM-COLLECTOR',
   semiPrice: '2,399',
   annualPrice: '3,828',
   semiOtherPrice: '239.99',
@@ -60,7 +64,9 @@ const premium = {
   cta: 'Sign up',
 };
 const reportA = {
+  id: '3',
   title: 'Report-Only: Basic',
+  packageCode: 'REPORT-ONLY-BASIC',
   semiPrice: '1,699',
   annualPrice: '1,699',
   semiOtherPrice: '169.99',
@@ -77,7 +83,9 @@ const reportA = {
   cta: 'Sign up',
 };
 const reportB = {
+  id: '4',
   title: 'Report-Only: Premium',
+  packageCode: 'REPORT-ONLY-PREMIUM',
   semiPrice: '3,399',
   annualPrice: '3,399',
   semiOtherPrice: '339.99',
@@ -94,7 +102,9 @@ const reportB = {
   cta: 'Sign up',
 };
 const enterprise = {
+  id: '5',
   title: 'Pro Collector',
+  packageCode: 'PRO-COLLECTOR',
   semiPrice: 'Contact us',
   annualPrice: 'Contact us',
   semiOtherPrice: 'Contact us',

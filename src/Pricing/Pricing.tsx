@@ -5,7 +5,9 @@ import classnames from 'classnames';
 import { CheckoutProps } from '../Checkout';
 
 export interface PriceTier {
+  id: string;
   title: string;
+  packageCode: string;
   price?: number;
   semiPrice: string;
   annualPrice: string;
