@@ -230,6 +230,8 @@ const Pricing = ({
                         subscription: tier.subscription,
                         price: currency + billingPrice,
                         amount,
+                        amountInCents: amount * 100,
+                        currency: isOutsideSA ? 'USD' : 'ZAR',
                         paymentButtonText: 'Complete Payment',
                         membershipUrlText: 'Learn about our terms of service',
                         membershipUrl: '#pablo',
