@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckIcon } from '@heroicons/react/outline';
+import { CheckIcon, XIcon } from '@heroicons/react/outline';
 import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
 import classnames from 'classnames';
 import { CheckoutProps } from '../Checkout';
@@ -16,7 +16,7 @@ export interface PriceTier {
   currency: string;
   currencyOther: string;
   description: string;
-  features: { id: string; name: string }[];
+  features: { id: string; name: string; lineThrough?: boolean }[];
   cta: string;
   mostPopular: boolean;
   subscription: boolean;
@@ -200,15 +200,28 @@ const Pricing = ({
                     <ul role="list" className="mt-6 space-y-6">
                       {tier.features.map((feature) => (
                         <li key={feature.id} className="flex">
-                          {feature.name && (
-                            <CheckIcon
-                              className="flex-shrink-0 w-6 h-6 text-indigo-500"
-                              aria-hidden="true"
-                            />
+                          {feature.name &&
+                            (feature.lineThrough ? (
+                              <XIcon
+                                className="flex-shrink-0 w-6 h-6 text-red-500"
+                                aria-hidden="true"
+                              />
+                            ) : (
+                              <CheckIcon
+                                className="flex-shrink-0 w-6 h-6 text-indigo-500"
+                                aria-hidden="true"
+                              />
+                            ))}
+
+                          {feature.lineThrough ? (
+                            <span className="ml-3 text-gray-500 line-through">
+                              {feature.name}
+                            </span>
+                          ) : (
+                            <span className="ml-3 text-gray-500">
+                              {feature.name}
+                            </span>
                           )}
-                          <span className="ml-3 text-gray-500">
-                            {feature.name}
-                          </span>
                         </li>
                       ))}
                     </ul>
