@@ -13,8 +13,10 @@ export interface CheckoutProps {
   amountInCents: number;
   currency: string;
   subscription: boolean;
-  membershipUrlText?: string;
-  membershipUrl?: string;
+  termsOfUseUrlText?: string;
+  termsOfUseUrl?: string;
+  privacyPolicyUrlText?: string;
+  privacyPolicyUrl?: string;
   paymentButtonText: string;
   onCompletePayment?: (props: CheckoutProps) => void;
   cancelText?: string;
@@ -84,18 +86,25 @@ const Checkout = (props: CheckoutProps) => {
                     {props.currency}
                   </span>
                 </div>
-                {props.membershipUrlText && (
+                {props.termsOfUseUrlText && (
                   <p className="mt-4 text-sm">
                     <a
-                      href={props.membershipUrl}
+                      href={props.termsOfUseUrl}
                       target="_blank"
                       className="font-medium text-gray-500 underline"
-                      // onClick={(e) => {
-                      //   e.preventDefault();
-                      //   props.onMembershipUrlClick?.();
-                      // }}
                     >
-                      {props.membershipUrlText}
+                      {props.termsOfUseUrlText}
+                    </a>
+                  </p>
+                )}
+                {props.privacyPolicyUrlText && (
+                  <p className="mt-4 text-sm">
+                    <a
+                      href={props.privacyPolicyUrl}
+                      target="_blank"
+                      className="font-medium text-gray-500 underline"
+                    >
+                      {props.privacyPolicyUrlText}
                     </a>
                   </p>
                 )}

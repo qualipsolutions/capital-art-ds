@@ -28,9 +28,12 @@ Default.args = {
   price: 'R2,399',
   amount: 2399,
   paymentButtonText: 'Complete Payment',
-  membershipUrlText: 'Learn about our terms of service',
-  membershipUrl:
+  termsOfUseUrlText: 'Learn about our terms of use',
+  termsOfUseUrl:
     'https://capitalart.co/wp-content/uploads/2021/08/Capital-Art-Terms-of-Use.pdf',
+  privacyPolicyUrlText: 'Learn about our privacy policy',
+  privacyPolicyUrl:
+    'https://capitalart.co/wp-content/uploads/2021/08/Capital-Art-Privacy-Policy-GDPR-POPIA_Published.pdf',
   features: [
     'Up to 99 artworks',
     'Securely manage your collection',
