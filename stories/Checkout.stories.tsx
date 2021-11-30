@@ -29,9 +29,8 @@ Default.args = {
   amount: 2399,
   paymentButtonText: 'Complete Payment',
   membershipUrlText: 'Learn about our terms of service',
-  onMembershipUrlClick: function () {
-    console.log('link click');
-  },
+  membershipUrl:
+    'https://capitalart.co/wp-content/uploads/2021/08/Capital-Art-Terms-of-Use.pdf',
   features: [
     'Up to 99 artworks',
     'Securely manage your collection',

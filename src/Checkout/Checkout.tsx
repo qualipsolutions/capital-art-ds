@@ -14,7 +14,7 @@ export interface CheckoutProps {
   currency: string;
   subscription: boolean;
   membershipUrlText?: string;
-  onMembershipUrlClick?: () => void;
+  membershipUrl?: string;
   paymentButtonText: string;
   onCompletePayment?: (props: CheckoutProps) => void;
   cancelText?: string;
@@ -84,18 +84,21 @@ const Checkout = (props: CheckoutProps) => {
                     {props.currency}
                   </span>
                 </div>
-                <p className="mt-4 text-sm">
-                  <a
-                    href="#"
-                    className="font-medium text-gray-500 underline"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      props.onMembershipUrlClick?.();
-                    }}
-                  >
-                    {props.membershipUrlText}
-                  </a>
-                </p>
+                {props.membershipUrlText && (
+                  <p className="mt-4 text-sm">
+                    <a
+                      href={props.membershipUrl}
+                      target="_blank"
+                      className="font-medium text-gray-500 underline"
+                      // onClick={(e) => {
+                      //   e.preventDefault();
+                      //   props.onMembershipUrlClick?.();
+                      // }}
+                    >
+                      {props.membershipUrlText}
+                    </a>
+                  </p>
+                )}
                 {props.paymentButtonText && (
                   <div className="mt-6">
                     <div className="rounded-md shadow">
