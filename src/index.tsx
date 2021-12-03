@@ -6,3 +6,6 @@ export * from './Pricing';
 
 export { default as Checkout } from './Checkout';
 export * from './Checkout';
+
+export { default as OptionSelector } from './OptionSelector';
+export * from './OptionSelector';

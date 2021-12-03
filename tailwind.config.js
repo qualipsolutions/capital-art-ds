@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors');
+
 module.exports = {
   mode: 'jit',
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './stories/*'],
@@ -18,7 +20,11 @@ module.exports = {
       xl: '1201px',
       '2xl': '1601px',
     },
-    extend: {},
+    extend: {
+      colors: {
+        rose: colors.rose,
+      },
+    },
   },
   variants: {
     extend: {},
