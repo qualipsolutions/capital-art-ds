@@ -9,3 +9,6 @@ export * from './Checkout';
 
 export { default as OptionSelector } from './OptionSelector';
 export * from './OptionSelector';
+
+export { default as DescriptionList } from './DescriptionList';
+export * from './DescriptionList';

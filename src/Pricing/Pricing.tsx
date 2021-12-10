@@ -146,24 +146,22 @@ const Pricing = ({
               let currency = '';
               let frequency = '';
               if (isAnnualBilling) {
+                frequency = 'Annually';
                 if (isOutsideSA) {
                   price = tier.annualOtherPrice;
                   currency = tier.currencyOther;
-                  frequency = 'Annually';
                 } else {
                   price = tier.annualPrice;
                   currency = tier.currency;
-                  frequency = 'Annually';
                 }
               } else {
+                frequency = 'Semi-annually';
                 if (isOutsideSA) {
                   price = tier.semiOtherPrice;
                   currency = tier.currencyOther;
-                  frequency = 'Semi-annually';
                 } else {
                   price = tier.semiPrice;
                   currency = tier.currency;
-                  frequency = 'Semi-annually';
                 }
               }
 
