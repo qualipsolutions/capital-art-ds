@@ -34,6 +34,7 @@ const DescriptionList = ({
         )}
         {list.map(({ name, value, heading }, index) => (
           <div
+            key={name}
             className={classnames(
               ' px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6',
               {
