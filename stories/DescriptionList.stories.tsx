@@ -19,8 +19,6 @@ const Template: Story<DescriptionListProps> = (args) => (
 
 export const Default: Story<DescriptionListProps> = Template.bind({});
 Default.args = {
-  title: 'Details',
-  subTitle: 'Basic details',
   list: [
     { name: 'General', heading: true },
     { name: 'First Name', value: 'Tshepo' },
